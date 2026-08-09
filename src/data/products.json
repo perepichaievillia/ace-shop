@@ -2,16 +2,14 @@
   "products": [
     {
       "details": [
-        "Oversized, dropped-shoulder fit",
-        "Heavyweight 380gsm brushed fleece",
-        "Ribbed cuffs and hem",
-        "Embroidered ACE wordmark on chest",
-        "Kangaroo pocket"
+        "Оверсайз / злегка вкорочений крій (Semi-cropped Relaxed Fit) зі спущеною лінією плеча.",
+        "Стильний контурний напис «school» вздовж правого рукава.",
+        "Великий акцентний графічний логотип «ACE» знизу на спині."
       ],
-      "material": "80% cotton, 20% recycled polyester. Brushed interior. Pre-shrunk.",
-      "price": 1890,
-      "name": "ACE Hoodie",
-      "slug": "ace-hoodie-black",
+      "material": "Преміальна щільна бавовна",
+      "price": 1500,
+      "name": "ACE Hoodie 2026",
+      "slug": "ace-hoodie-2026",
       "featured": true,
       "colors": [
         "Black"
@@ -26,12 +24,11 @@
       ],
       "stock": 10,
       "images": [
-        "hoodie-black-1",
-        "hoodie-black-2"
+        "/images/products/shotova-ai-product-photography-untitled-product-1-20260809-135407-1-.png"
       ],
       "id": "ace-hoodie-black",
-      "description": "Oversized hoodie created for the ACE community. Heavyweight brushed fleece, dropped shoulder, ribbed cuffs. Built for hallway to weekend.",
-      "category": "clothing"
+      "description": "Головний хіт цього сезону! Абсолютно нове худі, що поєднує трендовий трохи вкорочений крій (semi-cropped) та вільну мішкувату посадку (oversize). Воно не надто коротке, як класичні кроп-топи, але має ідеальну сучасну довжину, яка підкреслює силует та чудово виглядає зі штанами чи джинсами.",
+      "category": "senior"
     },
     {
       "details": [
