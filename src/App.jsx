@@ -13,7 +13,7 @@ import NotFound from './pages/NotFound/NotFound';
 export default function App() {
   return (
     <CartProvider>
-      <BrowserRouter>
+      <BrowserRouter basename="/ace-shop">
         <Routes>
           <Route element={<MainLayout />}>
             <Route path="/" element={<Home />} />
