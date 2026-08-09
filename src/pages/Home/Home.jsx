@@ -35,7 +35,7 @@ const placeholders = {
   accessories: (
     <svg width="100%" height="100%" viewBox="0 0 400 500" fill="none" xmlns="http://www.w3.org/2000/svg" className={styles.categoryPlaceholder}>
       <rect width="400" height="500" fill="#84AF71"/>
-      <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="var(--font-display)" font-weight="800" font-size="120" fill="black">АЦ</text>
+      <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="var(--font-display)" font-weight="800" font-size="120" fill="black">АК</text>
     </svg>
   ),
 };
@@ -87,7 +87,7 @@ export default function Home() {
             </div>
 
             <div className={styles.heroImageWrap}>
-              <span className={styles.heroBadge}>New Drop</span>
+              <span className={styles.heroBadge}>Новинка</span>
               <img
                 src={getImageUrl(heroData.heroImage)}
                 alt="ACE Hero"
@@ -106,7 +106,7 @@ export default function Home() {
           <Reveal className={styles.sectionHead}>
             <h2 className={styles.sectionTitle}>Колекція</h2>
             <Button as={Link} to="/shop" variant="ghost">
-              View all <ArrowRight size={14} style={{ display: 'inline', verticalAlign: '-2px' }} />
+              Більше товарів <ArrowRight size={14} style={{ display: 'inline', verticalAlign: '-2px' }} />
             </Button>
           </Reveal>
           <Reveal>
