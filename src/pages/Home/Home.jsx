@@ -10,13 +10,54 @@ import styles from './Home.module.css';
 // Підключаємо файл даних, які будуть змінюватися через адмін-панель
 import heroData from '../../data/hero.json';
 
-// Функція для коректного оброблення шляху до фотографії
+// Функція для коректного оброблення шляху до будь-якої фотографії
 function getImageUrl(image) {
   if (!image) return '';
   if (image.startsWith('http')) return image;
   const cleanPath = image.replace(/^public\//, '').replace(/^\//, '');
   return `${import.meta.env.BASE_URL}${cleanPath}`;
 }
+
+// Абстрактні SVG-заглушки для категорій
+const placeholders = {
+  junior: (
+    <svg width="100%" height="100%" viewBox="0 0 400 500" fill="none" xmlns="http://www.w3.org/2000/svg" className={styles.categoryPlaceholder}>
+      <rect width="400" height="500" fill="#84AF71"/>
+      <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="var(--font-display)" font-weight="800" font-size="120" fill="black">МШ</text>
+    </svg>
+  ),
+  senior: (
+    <svg width="100%" height="100%" viewBox="0 0 400 500" fill="none" xmlns="http://www.w3.org/2000/svg" className={styles.categoryPlaceholder}>
+      <rect width="400" height="500" fill="#84AF71"/>
+      <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="var(--font-display)" font-weight="800" font-size="120" fill="black">СШ</text>
+    </svg>
+  ),
+  accessories: (
+    <svg width="100%" height="100%" viewBox="0 0 400 500" fill="none" xmlns="http://www.w3.org/2000/svg" className={styles.categoryPlaceholder}>
+      <rect width="400" height="500" fill="#84AF71"/>
+      <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="var(--font-display)" font-weight="800" font-size="120" fill="black">АЦ</text>
+    </svg>
+  ),
+};
+
+// Дані для карток категорій на головній (абстракція)
+const homeCategories = [
+  {
+    id: 'junior',
+    title: 'Молодша школа',
+    link: '/shop?category=junior',
+  },
+  {
+    id: 'senior',
+    title: 'Старша школа',
+    link: '/shop?category=senior',
+  },
+  {
+    id: 'accessories',
+    title: 'Аксесуари',
+    link: '/shop?category=accessories',
+  },
+];
 
 export default function Home() {
   const featured = getFeaturedProducts().slice(0, 4);
@@ -51,6 +92,7 @@ export default function Home() {
                 src={getImageUrl(heroData.heroImage)}
                 alt="ACE Hero"
                 className={styles.heroImage}
+                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
               />
             </div>
           </div>
@@ -100,37 +142,22 @@ export default function Home() {
           <Reveal className={styles.sectionHead}>
             <h2 className={styles.sectionTitle}>Обирай своє</h2>
           </Reveal>
+          
           <Reveal>
             <div className={styles.categoryGrid}>
-              <Link to="/shop?category=junior" className={styles.categoryCard}>
-                <img
-                  src={getImageUrl('images/products/pub../img_2540.jpg.jpg')} 
-                  alt="Молодша школа"
-                  className={styles.categoryImg}
-                />
-                <div className={styles.categoryOverlay} />
-                <span className={styles.categoryLabel}>Молодша школа</span>
-              </Link>
+              
+              {/* Автоматична генерація карток категорій */}
+              {homeCategories.map((cat) => (
+                <Link key={cat.id} to={cat.link} className={styles.categoryCard}>
+                  
+                  {/* Абстрактна заглушка замість картинки */}
+                  {placeholders[cat.id]}
+                  
+                  <div className={styles.categoryOverlay} />
+                  <span className={styles.categoryLabel}>{cat.title}</span>
+                </Link>
+              ))}
 
-              <Link to="/shop?category=senior" className={styles.categoryCard}>
-                <img
-                  src={getImageUrl('images/products/crewneck-forest-1.jpg')} 
-                  alt="Старша школа"
-                  className={styles.categoryImg}
-                />
-                <div className={styles.categoryOverlay} />
-                <span className={styles.categoryLabel}>Старша школа</span>
-              </Link>
-
-              <Link to="/shop?category=accessories" className={styles.categoryCard}>
-                <img
-                  src={getImageUrl('images/products/tote-natural-1.jpg')} 
-                  alt="Аксесуари"
-                  className={styles.categoryImg}
-                />
-                <div className={styles.categoryOverlay} />
-                <span className={styles.categoryLabel}>Аксесуари</span>
-              </Link>
             </div>
           </Reveal>
         </div>
