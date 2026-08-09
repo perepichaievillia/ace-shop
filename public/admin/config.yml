@@ -6,6 +6,7 @@ media_folder: "public/images"
 public_folder: "/images"
 
 collections:
+
   - name: "hero"
     label: "Головний банер"
     files:
@@ -13,7 +14,119 @@ collections:
         label: "Фото та текст на головній"
         name: "hero_data"
         fields:
-          - { label: "Заголовок 1", name: "title1", widget: "string", default: "Носи те," }
-          - { label: "Заголовок 2", name: "title2", widget: "string", default: "ким ти" }
-          - { label: "Акцентне слово", name: "accent", widget: "string", default: "є." }
-          - { label: "Фотографія (Завантажити)", name: "heroImage", widget: "image" }
+          - label: "Заголовок 1"
+            name: "title1"
+            widget: "string"
+            default: "Носи те,"
+
+          - label: "Заголовок 2"
+            name: "title2"
+            widget: "string"
+            default: "ким ти"
+
+          - label: "Акцентне слово"
+            name: "accent"
+            widget: "string"
+            default: "є."
+
+          - label: "Фотографія"
+            name: "heroImage"
+            widget: "image"
+
+
+  - name: "products"
+    label: "Товари"
+    file: "src/data/products.json"
+    fields:
+
+      - label: "Товари"
+        name: "products"
+        widget: "list"
+        summary: "{{name}} — {{price}} грн"
+
+        fields:
+
+          - label: "ID"
+            name: "id"
+            widget: "string"
+
+          - label: "URL товару"
+            name: "slug"
+            widget: "string"
+            hint: "Наприклад: ace-hoodie-black"
+
+          - label: "Назва"
+            name: "name"
+            widget: "string"
+
+          - label: "Категорія"
+            name: "category"
+            widget: "select"
+            options:
+              - label: "Одяг"
+                value: "clothing"
+              - label: "Аксесуари"
+                value: "accessories"
+
+          - label: "Ціна"
+            name: "price"
+            widget: "number"
+            value_type: "int"
+            min: 0
+
+          - label: "Валюта"
+            name: "currency"
+            widget: "string"
+            default: "UAH"
+
+          - label: "Кількість на складі"
+            name: "stock"
+            widget: "number"
+            value_type: "int"
+            min: 0
+            default: 0
+
+          - label: "Кольори"
+            name: "colors"
+            widget: "list"
+            field:
+              label: "Колір"
+              name: "color"
+              widget: "string"
+
+          - label: "Розміри"
+            name: "sizes"
+            widget: "list"
+            field:
+              label: "Розмір"
+              name: "size"
+              widget: "string"
+
+          - label: "Опис"
+            name: "description"
+            widget: "text"
+
+          - label: "Деталі"
+            name: "details"
+            widget: "list"
+            field:
+              label: "Деталь"
+              name: "detail"
+              widget: "string"
+
+          - label: "Матеріал"
+            name: "material"
+            widget: "text"
+
+          - label: "Фотографії"
+            name: "images"
+            widget: "list"
+            field:
+              label: "Фотографія"
+              name: "image"
+              widget: "image"
+
+          - label: "Показувати як рекомендований"
+            name: "featured"
+            widget: "boolean"
+            default: false

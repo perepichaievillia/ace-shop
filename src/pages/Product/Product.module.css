@@ -1,7 +1,20 @@
 .wrap {
+  width: min(100% - 136px, 1400px);
+  margin: 0 auto;
   padding: var(--sp-6) 0 var(--sp-10);
 }
 
+@media (max-width: 1024px) {
+  .wrap {
+    width: min(100% - 40px, 1400px);
+  }
+}
+
+@media (max-width: 640px) {
+  .wrap {
+    width: min(100% - 32px, 1400px);
+  }
+}
 .breadcrumb {
   display: flex;
   gap: 8px;

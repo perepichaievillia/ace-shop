@@ -23,7 +23,7 @@ export default function ProductCard({ product }) {
             className={`${styles.img} ${styles.imgSecondary}`}
           />
         )}
-        <span className={styles.cta}>View product</span>
+        <span className={styles.cta}>Переглянути товар</span>
       </div>
       <div className={styles.meta}>
         <div className={styles.info}>
