@@ -34,6 +34,10 @@
       "category": "clothing"
     },
     {
+      "details": [
+        "100% бавовна"
+      ],
+      "material": "100% бавовна",
       "price": 450,
       "name": "Футболка ACE light green",
       "slug": "thirts-msh-light-green",
