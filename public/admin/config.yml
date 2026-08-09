@@ -36,100 +36,99 @@ collections:
             name: "heroImage"
             widget: "image"
 
-
   - name: "products"
     label: "Товари"
-    file: "src/data/products.json"
-    fields:
-
-      - label: "Товари"
-        name: "products"
-        widget: "list"
-        summary: "{{name}} — {{price}} грн"
-
+    files:
+      - file: "src/data/products.json"
+        label: "Список всіх товарів"
+        name: "products_data"
         fields:
-
-          - label: "ID"
-            name: "id"
-            widget: "string"
-
-          - label: "URL товару"
-            name: "slug"
-            widget: "string"
-            hint: "Наприклад: ace-hoodie-black"
-
-          - label: "Назва"
-            name: "name"
-            widget: "string"
-
-          - label: "Категорія"
-            name: "category"
-            widget: "select"
-            options:
-              - label: "Одяг"
-                value: "clothing"
-              - label: "Аксесуари"
-                value: "accessories"
-
-          - label: "Ціна"
-            name: "price"
-            widget: "number"
-            value_type: "int"
-            min: 0
-
-          - label: "Валюта"
-            name: "currency"
-            widget: "string"
-            default: "UAH"
-
-          - label: "Кількість на складі"
-            name: "stock"
-            widget: "number"
-            value_type: "int"
-            min: 0
-            default: 0
-
-          - label: "Кольори"
-            name: "colors"
+          - label: "Товари"
+            name: "products"
             widget: "list"
-            field:
-              label: "Колір"
-              name: "color"
-              widget: "string"
+            summary: "{{name}} — {{price}} грн"
+            fields:
+              - label: "ID"
+                name: "id"
+                widget: "string"
 
-          - label: "Розміри"
-            name: "sizes"
-            widget: "list"
-            field:
-              label: "Розмір"
-              name: "size"
-              widget: "string"
+              - label: "URL товару"
+                name: "slug"
+                widget: "string"
+                hint: "Наприклад: ace-hoodie-black"
 
-          - label: "Опис"
-            name: "description"
-            widget: "text"
+              - label: "Назва"
+                name: "name"
+                widget: "string"
 
-          - label: "Деталі"
-            name: "details"
-            widget: "list"
-            field:
-              label: "Деталь"
-              name: "detail"
-              widget: "string"
+              - label: "Категорія"
+                name: "category"
+                widget: "select"
+                options:
+                  - label: "Одяг"
+                    value: "clothing"
+                  - label: "Аксесуари"
+                    value: "accessories"
 
-          - label: "Матеріал"
-            name: "material"
-            widget: "text"
+              - label: "Ціна"
+                name: "price"
+                widget: "number"
+                value_type: "int"
+                min: 0
 
-          - label: "Фотографії"
-            name: "images"
-            widget: "list"
-            field:
-              label: "Фотографія"
-              name: "image"
-              widget: "image"
+              - label: "Валюта"
+                name: "currency"
+                widget: "string"
+                default: "UAH"
 
-          - label: "Показувати як рекомендований"
-            name: "featured"
-            widget: "boolean"
-            default: false
+              - label: "Кількість на складі"
+                name: "stock"
+                widget: "number"
+                value_type: "int"
+                min: 0
+                default: 0
+
+              - label: "Кольори"
+                name: "colors"
+                widget: "list"
+                field:
+                  label: "Колір"
+                  name: "color"
+                  widget: "string"
+
+              - label: "Розміри"
+                name: "sizes"
+                widget: "list"
+                field:
+                  label: "Розмір"
+                  name: "size"
+                  widget: "string"
+
+              - label: "Опис"
+                name: "description"
+                widget: "text"
+
+              - label: "Деталі"
+                name: "details"
+                widget: "list"
+                field:
+                  label: "Деталь"
+                  name: "detail"
+                  widget: "string"
+
+              - label: "Матеріал"
+                name: "material"
+                widget: "text"
+
+              - label: "Фотографії"
+                name: "images"
+                widget: "list"
+                field:
+                  label: "Фотографія"
+                  name: "image"
+                  widget: "image"
+
+              - label: "Показувати як рекомендований"
+                name: "featured"
+                widget: "boolean"
+                default: false
