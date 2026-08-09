@@ -1,0 +1,41 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 55;
+  background: var(--c-dark);
+  color: var(--c-light);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--sp-8) var(--page-margin);
+  transform: translateY(-100%);
+  transition: transform var(--dur-med) var(--ease-editorial);
+}
+
+.open {
+  transform: translateY(0);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-5);
+}
+
+.link {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2.4rem, 12vw, 3.6rem);
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.footer {
+  margin-top: var(--sp-9);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  color: var(--c-light-70);
+  font-size: var(--fs-small);
+}

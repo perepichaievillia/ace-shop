@@ -1,0 +1,65 @@
+:root {
+  /* ACE Editorial — core palette */
+  --c-dark: #0D1510;
+  --c-black: #080B09;
+  --c-light: #F3F1EA;
+  --c-accent: #7FAF62;
+
+  /* derived tints */
+  --c-dark-60: rgba(13, 21, 16, 0.6);
+  --c-dark-30: rgba(13, 21, 16, 0.3);
+  --c-dark-12: rgba(13, 21, 16, 0.12);
+  --c-light-70: rgba(243, 241, 234, 0.7);
+  --c-light-40: rgba(243, 241, 234, 0.4);
+  --c-light-14: rgba(243, 241, 234, 0.14);
+  --c-accent-dim: #639250;
+
+  /* type */
+  --font-display: 'Manrope', 'Inter', sans-serif;
+  --font-body: 'Inter', 'Manrope', sans-serif;
+
+  /* fluid type scale */
+  --fs-hero: clamp(3.4rem, 13vw, 10.5rem);
+  --fs-h1: clamp(2.4rem, 6vw, 4.6rem);
+  --fs-h2: clamp(1.8rem, 4vw, 3rem);
+  --fs-h3: clamp(1.25rem, 2.4vw, 1.75rem);
+  --fs-body-lg: 1.125rem;
+  --fs-body: 1rem;
+  --fs-small: 0.875rem;
+  --fs-micro: 0.75rem;
+
+  /* spacing scale (8px-based, editorial jumps) */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 24px;
+  --sp-6: 32px;
+  --sp-7: 48px;
+  --sp-8: 64px;
+  --sp-9: 96px;
+  --sp-10: 128px;
+  --sp-11: 160px;
+
+  /* layout */
+  --page-margin: clamp(20px, 5vw, 64px);
+  --header-h: 76px;
+  --header-h-mobile: 60px;
+  --max-width: 1600px;
+
+  /* motion */
+  --ease-editorial: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast: 180ms;
+  --dur-med: 380ms;
+  --dur-slow: 620ms;
+
+  /* borders */
+  --hairline: 1px solid var(--c-dark-12);
+  --hairline-light: 1px solid var(--c-light-14);
+}
+
+/* breakpoints (reference only, used via media queries):
+   mobile:  max-width 640px
+   tablet:  641px - 1024px
+   desktop: 1025px+
+*/

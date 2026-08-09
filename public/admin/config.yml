@@ -1,0 +1,19 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/images"
+public_folder: "/images"
+
+collections:
+  - name: "hero"
+    label: "Головний банер"
+    files:
+      - file: "src/data/hero.json"
+        label: "Фото та текст на головній"
+        name: "hero_data"
+        fields:
+          - { label: "Заголовок 1", name: "title1", widget: "string", default: "Носи те," }
+          - { label: "Заголовок 2", name: "title2", widget: "string", default: "ким ти" }
+          - { label: "Акцентне слово", name: "accent", widget: "string", default: "є." }
+          - { label: "Фотографія (Завантажити)", name: "heroImage", widget: "image" }

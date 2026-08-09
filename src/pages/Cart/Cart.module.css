@@ -1,0 +1,148 @@
+.wrap {
+  padding: var(--sp-6) 0 var(--sp-10);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--fs-h1);
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  margin-bottom: var(--sp-6);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-8);
+}
+
+@media (min-width: 1025px) {
+  .layout {
+    grid-template-columns: 1.6fr 1fr;
+    align-items: start;
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+}
+
+.line {
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: var(--sp-4);
+  padding: var(--sp-5) 0;
+  border-top: var(--hairline);
+}
+
+.list .line:last-child {
+  border-bottom: var(--hairline);
+}
+
+.thumb {
+  width: 96px;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--c-dark-12);
+}
+
+.thumbImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.lineBody {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.lineTop {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--sp-3);
+}
+
+.name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.variant {
+  font-size: var(--fs-small);
+  color: var(--c-dark-60);
+}
+
+.linePrice {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.lineBottom {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--sp-4);
+}
+
+.remove {
+  background: none;
+  border: none;
+  font-size: var(--fs-small);
+  color: var(--c-dark-60);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  padding: 0;
+}
+
+.remove:hover {
+  color: var(--c-dark);
+}
+
+.summary {
+  border: var(--hairline);
+  padding: var(--sp-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+
+.summaryTitle {
+  font-size: var(--fs-micro);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.summaryRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--fs-body);
+}
+
+.summaryTotal {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 700;
+  font-size: var(--fs-body-lg);
+  padding-top: var(--sp-3);
+  border-top: var(--hairline);
+}
+
+.empty {
+  padding: var(--sp-10) 0;
+  text-align: center;
+}
+
+.emptyTitle {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--fs-h2);
+  text-transform: uppercase;
+  margin: var(--sp-3) 0 var(--sp-6);
+}

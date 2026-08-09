@@ -1,0 +1,54 @@
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.label {
+  font-size: var(--fs-micro);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--c-dark);
+}
+
+.selected {
+  font-size: var(--fs-small);
+  color: var(--c-dark-60);
+}
+
+.options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+}
+
+.option {
+  min-width: 48px;
+  height: 48px;
+  padding: 0 14px;
+  border: 1px solid var(--c-dark);
+  background: transparent;
+  color: var(--c-dark);
+  font-size: var(--fs-small);
+  font-weight: 600;
+}
+
+.option:hover {
+  background: var(--c-dark-12);
+}
+
+.optionActive {
+  background: var(--c-dark);
+  color: var(--c-light);
+}
+
+.optionActive:hover {
+  background: var(--c-dark);
+}

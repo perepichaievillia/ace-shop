@@ -1,0 +1,28 @@
+.control {
+  display: inline-flex;
+  align-items: center;
+  border: var(--hairline);
+  height: 48px;
+}
+
+.btn {
+  width: 44px;
+  height: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: var(--c-dark);
+}
+
+.btn:hover:not(:disabled) {
+  background: var(--c-dark-12);
+}
+
+.value {
+  width: 40px;
+  text-align: center;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
