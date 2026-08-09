@@ -1,28 +1,37 @@
 export default async (req) => {
-  if (req.httpMethod !== 'POST') {
-    return {
-      statusCode: 405,
-      body: JSON.stringify({
+  // Дозволяємо тільки POST
+  if (req.method !== 'POST') {
+    return new Response(
+      JSON.stringify({
         error: 'Method not allowed',
       }),
-    };
+      {
+        status: 405,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    );
   }
 
   try {
-    const order = JSON.parse(req.body);
+    const order = await req.json();
 
     const token = process.env.TELEGRAM_BOT_TOKEN;
     const chatId = process.env.TELEGRAM_CHAT_ID;
 
     if (!token || !chatId) {
-      return {
-        statusCode: 500,
-        body: JSON.stringify({
+      return new Response(
+        JSON.stringify({
           error: 'Telegram environment variables are missing',
-          hasToken: Boolean(token),
-          hasChatId: Boolean(chatId),
         }),
-      };
+        {
+          status: 500,
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
     }
 
     const customer = order.customer || {};
@@ -58,9 +67,9 @@ ${delivery}
 ${order.comment || 'Немає'}
 
 💰 РАЗОМ: ${order.total} грн
-`;
+`.trim();
 
-    const response = await fetch(
+    const telegramResponse = await fetch(
       `https://api.telegram.org/bot${token}/sendMessage`,
       {
         method: 'POST',
@@ -69,37 +78,52 @@ ${order.comment || 'Немає'}
         },
         body: JSON.stringify({
           chat_id: chatId,
-          text: message.trim(),
+          text: message,
         }),
       }
     );
 
-    const result = await response.json();
+    const telegramResult = await telegramResponse.json();
 
-    if (!result.ok) {
-      return {
-        statusCode: 500,
-        body: JSON.stringify({
+    if (!telegramResult.ok) {
+      return new Response(
+        JSON.stringify({
           error: 'Telegram API error',
-          details: result,
+          details: telegramResult,
         }),
-      };
+        {
+          status: 500,
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
     }
 
-    return {
-      statusCode: 200,
-      body: JSON.stringify({
+    return new Response(
+      JSON.stringify({
         success: true,
       }),
-    };
+      {
+        status: 200,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    );
   } catch (error) {
     console.error('send-order error:', error);
 
-    return {
-      statusCode: 500,
-      body: JSON.stringify({
-        error: error.message || 'Unknown server error',
+    return new Response(
+      JSON.stringify({
+        error: error.message || 'Unknown error',
       }),
-    };
+      {
+        status: 500,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    );
   }
 };
