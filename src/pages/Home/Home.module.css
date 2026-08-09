@@ -91,7 +91,6 @@
   text-transform: uppercase;
 }
 
-/* SECTION SHELL */
 .section {
   padding: var(--sp-9) 0;
 }
@@ -113,7 +112,6 @@
   line-height: 0.95;
 }
 
-/* MANIFESTO */
 .manifesto {
   background: var(--c-dark);
   color: var(--c-light);
@@ -148,16 +146,15 @@
   font-size: var(--fs-body-lg);
 }
 
-/* CATEGORY */
 .categoryGrid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--sp-4);
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-4, 24px);
 }
 
-@media (min-width: 641px) {
+@media (max-width: 768px) {
   .categoryGrid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
   }
 }
 
