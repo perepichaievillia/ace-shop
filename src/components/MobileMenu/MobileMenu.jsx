@@ -17,17 +17,17 @@ export default function MobileMenu({ open, onClose }) {
     >
       <nav className={styles.list} aria-label="Mobile">
         <Link to="/shop" className={styles.link} onClick={onClose} tabIndex={open ? 0 : -1}>
-          Shop
+          Магазин
         </Link>
         <Link to="/about" className={styles.link} onClick={onClose} tabIndex={open ? 0 : -1}>
-          About
+          Про нас
         </Link>
         <Link to="/cart" className={styles.link} onClick={onClose} tabIndex={open ? 0 : -1}>
-          Bag
+          Кошик
         </Link>
       </nav>
       <div className={styles.footer}>
-        <span>WEAR YOUR ACE.</span>
+        <span>Будь собою. Будь ACE.</span>
         <span>ACE School — School Merch 2026</span>
       </div>
     </div>
