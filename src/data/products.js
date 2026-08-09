@@ -1,6 +1,12 @@
 import productsData from './products.json';
 
-export const products = productsData.products;
+export const CATEGORIES = [
+  { id: 'all', label: 'Усі' },
+  { id: 'clothing', label: 'Одяг' },
+  { id: 'accessories', label: 'Аксесуари' },
+];
+
+export const products = productsData.products ?? productsData;
 
 export function getProductBySlug(slug) {
   return products.find((p) => p.slug === slug);
@@ -15,9 +21,3 @@ export function getProductsByCategory(category) {
 
   return products.filter((p) => p.category === category);
 }
-
-export const CATEGORIES = [
-  { id: 'all', label: 'Усі' },
-  { id: 'clothing', label: 'Одяг' },
-  { id: 'accessories', label: 'Аксесуари' },
-];
