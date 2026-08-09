@@ -1,6 +1,9 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: perepichaievillia/ace-shop
   branch: main
+  base_url: https://floral-flower-444cace-shop-auth.perepichaiev-illia.workers.dev
+  auth_endpoint: /auth
 
 media_folder: "public/images"
 public_folder: "/images"
