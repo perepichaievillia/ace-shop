@@ -10,7 +10,8 @@ import { useCart } from '../../context/CartContext';
 import styles from './Product.module.css';
 
 const categoryLabels = {
-  clothing: 'Одяг',
+  junior: 'Молодша школа',
+  senior: 'Старша школа',
   accessories: 'Аксесуари',
 };
 

@@ -5,8 +5,8 @@ backend:
   base_url: https://floral-flower-444cace-shop-auth.perepichaiev-illia.workers.dev
   auth_endpoint: /auth
 
-media_folder: "public/images"
-public_folder: "public/images"
+media_folder: "public/images/products"
+public_folder: "/images/products"
 
 collections:
 
@@ -65,10 +65,9 @@ collections:
                 name: "category"
                 widget: "select"
                 options:
-                  - label: "Одяг"
-                    value: "clothing"
-                  - label: "Аксесуари"
-                    value: "accessories"
+                - { label: "Молодша школа", value: "junior" }
+                - { label: "Старша школа", value: "senior" }
+                - { label: "Аксесуари", value: "accessories" }
 
               - label: "Ціна"
                 name: "price"

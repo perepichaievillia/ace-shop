@@ -1,9 +1,10 @@
 import productsData from './products.json';
 
 export const CATEGORIES = [
-  { id: 'all', label: 'Усі' },
-  { id: 'clothing', label: 'Одяг' },
-  { id: 'accessories', label: 'Аксесуари' },
+  { id: 'all', label: 'УСІ' },
+  { id: 'junior', label: 'МОЛОДША ШКОЛА' },
+  { id: 'senior', label: 'СТАРША ШКОЛА' },
+  { id: 'accessories', label: 'АКСЕСУАРИ' },
 ];
 
 export const products = productsData.products ?? productsData;
