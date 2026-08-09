@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import { CartProvider } from './context/CartContext';
 import MainLayout from './layouts/MainLayout';
 import Home from './pages/Home/Home';
@@ -13,7 +13,7 @@ import NotFound from './pages/NotFound/NotFound';
 export default function App() {
   return (
     <CartProvider>
-      <BrowserRouter basename="/ace-shop">
+      <HashRouter>
         <Routes>
           <Route element={<MainLayout />}>
             <Route path="/" element={<Home />} />
@@ -26,7 +26,7 @@ export default function App() {
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </CartProvider>
   );
 }
