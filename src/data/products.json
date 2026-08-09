@@ -32,6 +32,28 @@
       "id": "ace-hoodie-black",
       "description": "Oversized hoodie created for the ACE community. Heavyweight brushed fleece, dropped shoulder, ribbed cuffs. Built for hallway to weekend.",
       "category": "clothing"
+    },
+    {
+      "price": 450,
+      "name": "Футболка ACE light green",
+      "slug": "thirts-msh-light-green",
+      "featured": false,
+      "colors": [
+        "light green"
+      ],
+      "currency": "UAH",
+      "sizes": [
+        "S",
+        "M"
+      ],
+      "stock": 3,
+      "images": [
+        "public/images/img_2532.jpg",
+        "public/images/img_2540.jpg",
+        "public/images/img_2547.jpg"
+      ],
+      "id": "thirts-msh-light-green",
+      "category": "clothing"
     }
   ]
 }
