@@ -67,25 +67,26 @@ export default function Home() {
       </section>
 
       <section className={styles.manifesto}>
-        <div className="container">
-          <Reveal>
-            <p className={styles.manifestoText}>
-              We don&rsquo;t just <span className={styles.fade}>go to school.</span>
-              <br />
-              We belong <span className={styles.fade}>to ACE.</span>
-            </p>
-          </Reveal>
-          <Reveal delay={120} className={styles.manifestoRow} style={{ marginTop: '48px' }}>
-            <p className={styles.manifestoNote}>
-              Every piece carries the crest of a community, built for the people who wear it
-              long after the bell rings.
-            </p>
-            <Button as={Link} to="/about" variant="outlineLight">
-              Our Story
-            </Button>
-          </Reveal>
-        </div>
-      </section>
+  <div className="container">
+    <Reveal>
+      <p className={styles.manifestoText}>
+        Ми не просто <span className={styles.fade}>ходимо до школи.</span>
+        <br />
+        Ми — частина <span className={styles.fade}>ACE.</span>
+      </p>
+    </Reveal>
+
+    <Reveal delay={120} className={styles.manifestoRow} style={{ marginTop: '48px' }}>
+      <p className={styles.manifestoNote}>
+        Це не просто мерч. Це частина спільноти, яку можна носити із собою далеко за межами школи.
+      </p>
+
+      <Button as={Link} to="/about" variant="outlineLight">
+        Наша історія
+      </Button>
+    </Reveal>
+  </div>
+</section>
 
       <section className={styles.section}>
         <div className="container">
