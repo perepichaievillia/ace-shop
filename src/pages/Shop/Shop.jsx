@@ -5,9 +5,9 @@ import { CATEGORIES, getProductsByCategory } from '../../data/products';
 import styles from './Shop.module.css';
 
 const SORTS = [
-  { id: 'newest', label: 'Newest' },
-  { id: 'price-asc', label: 'Price: Low to High' },
-  { id: 'price-desc', label: 'Price: High to Low' },
+  { id: 'newest', label: 'Найновіші' },
+  { id: 'price-asc', label: 'Від дешевших до дорожчих' },
+  { id: 'price-desc', label: 'Від дорожчих до дешевших' },
 ];
 
 export default function Shop() {
@@ -40,11 +40,11 @@ export default function Shop() {
   return (
     <div className="container">
       <div className={styles.head}>
-        <h1 className={styles.title}>Shop All</h1>
+        <h1 className={styles.title}>Магазин</h1>
       </div>
 
       <div className={styles.bar}>
-        <div className={styles.tabs} role="tablist" aria-label="Filter by category">
+        <div className={styles.tabs} role="tablist" aria-label="Фільтр за категорією">
           {CATEGORIES.map((cat) => (
             <button
               key={cat.id}
@@ -60,7 +60,7 @@ export default function Shop() {
         </div>
 
         <div className={styles.sortWrap}>
-          <label htmlFor="sort" className={styles.sortLabel}>Sort</label>
+          <label htmlFor="sort" className={styles.sortLabel}>Сортувати</label>
           <select
             id="sort"
             className={styles.select}

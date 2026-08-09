@@ -6,28 +6,28 @@ export default function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={`container ${styles.top}`}>
-        <p className={styles.headline}>Wear Your Ace.</p>
+        <p className={styles.headline}>Будь собою. <br /> Будь ACE.</p>
 
         <div className={styles.col}>
-          <span className={styles.colTitle}>Shop</span>
-          <Link to="/shop" className={styles.link}>All Products</Link>
-          <Link to="/shop?category=clothing" className={styles.link}>Clothing</Link>
-          <Link to="/shop?category=accessories" className={styles.link}>Accessories</Link>
+          <span className={styles.colTitle}>Магазин</span>
+          <Link to="/shop" className={styles.link}>Усі товари</Link>
+          <Link to="/shop?category=clothing" className={styles.link}>Одяг</Link>
+          <Link to="/shop?category=accessories" className={styles.link}>Аксесуари</Link>
         </div>
 
         <div className={styles.col}>
-          <span className={styles.colTitle}>Info</span>
-          <Link to="/about" className={styles.link}>About ACE Store</Link>
-          <a href="mailto:store@aceschool.ua" className={styles.link}>store@aceschool.ua</a>
-          <span className={styles.link}>Pick up at ACE School</span>
+          <span className={styles.colTitle}>Інформація</span>
+          <Link to="/about" className={styles.link}>Про ACE Store</Link>
+          <a href="mailto:store@aceschool.ua" className={styles.link}>info@ace-school.com.ua</a>
+          <span className={styles.link}>Забрати в ACE School</span>
         </div>
       </div>
 
       <Marquee dark />
 
       <div className={`container ${styles.bottom}`}>
-        <span>&copy; {new Date().getFullYear()} ACE School. All rights reserved.</span>
-        <span>Kyiv, Ukraine</span>
+        <span>&copy; {new Date().getFullYear()} ACE School. Всі права захищені.</span>
+        <span>Київ, Україна</span>
       </div>
     </footer>
   );

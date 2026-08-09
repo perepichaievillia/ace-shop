@@ -91,7 +91,7 @@ export default function Home() {
       <section className={styles.section}>
         <div className="container">
           <Reveal className={styles.sectionHead}>
-            <h2 className={styles.sectionTitle}>Shop By Category</h2>
+            <h2 className={styles.sectionTitle}>Обирай своє</h2>
           </Reveal>
           <div className={styles.categoryGrid}>
             <Reveal>
@@ -103,7 +103,7 @@ export default function Home() {
                   className={styles.categoryImg}
                 />
                 <div className={styles.categoryOverlay} />
-                <span className={styles.categoryLabel}>Clothing</span>
+                <span className={styles.categoryLabel}>Одяг</span>
               </Link>
             </Reveal>
             <Reveal delay={100}>
@@ -115,7 +115,7 @@ export default function Home() {
                   className={styles.categoryImg}
                 />
                 <div className={styles.categoryOverlay} />
-                <span className={styles.categoryLabel}>Accessories</span>
+                <span className={styles.categoryLabel}>Аксесуари</span>
               </Link>
             </Reveal>
           </div>
@@ -125,9 +125,9 @@ export default function Home() {
       <section className={styles.finalCta}>
         <div className="container">
           <Reveal>
-            <p className={styles.finalCtaHeadline}>Wear Your Ace.</p>
+            <p className={styles.finalCtaHeadline}>Носи те, ким ти є.</p>
             <Button as={Link} to="/shop" variant="primary">
-              Shop All
+              Дивитися все
             </Button>
           </Reveal>
         </div>

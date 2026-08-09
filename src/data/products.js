@@ -4,9 +4,9 @@
 // Until then, /src/utils/placeholder.js generates on-brand SVG placeholders.
 
 export const CATEGORIES = [
-  { id: 'all', label: 'All' },
-  { id: 'clothing', label: 'Clothing' },
-  { id: 'accessories', label: 'Accessories' },
+  { id: 'all', label: 'Усі' },
+  { id: 'clothing', label: 'Одяг' },
+  { id: 'accessories', label: 'Аксесуари' },
 ];
 
 export const products = [

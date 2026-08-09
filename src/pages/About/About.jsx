@@ -9,13 +9,12 @@ export default function About() {
     <>
       <div className="container">
         <div className={styles.hero}>
-          <span className={`eyebrow ${styles.eyebrow}`}>About</span>
+          <span className={`eyebrow ${styles.eyebrow}`}>Про нас</span>
           <Reveal as="h1" className={styles.headline}>
-            More Than A School. A Community You Wear.
+            Більше, ніж школа. Спільнота, яку ти носиш.
           </Reveal>
           <Reveal as="p" delay={100} className={styles.lead}>
-            ACE Store is the merch line of ACE School — built for students, alumni, and
-            anyone who believes a crest belongs on the street as much as it does in a hallway.
+           ACE Store — це мерч ACE School, створений для учнів, батьків, працівників і всіх, хто вважає, що символ школи має місце не лише в коридорах, а й на вулицях.
           </Reveal>
         </div>
 
@@ -29,37 +28,37 @@ export default function About() {
         </Reveal>
 
         <Reveal as="div" className={styles.section}>
-          <h2 className={styles.sectionTitle}>The Idea</h2>
+          <h2 className={styles.sectionTitle}>Ідея</h2>
           <p className={styles.sectionText}>
-            Most school merch stays in the building. We wanted ours to leave it. Every ACE
-            piece is designed first as clothing — considered fabrics, real fit, restrained
-            branding — so it holds up next to anything already in your rotation.
+            Більшість шкільного мерчу залишається в межах школи. Ми хочемо, щоб наш
+            виходив за її межі. Кожна річ ACE спочатку створюється як одяг — продумані
+            тканини, зручна посадка та стриманий брендинг, щоб вона легко вписувалася
+            у твій повсякденний гардероб.
           </p>
         </Reveal>
 
         <Reveal as="div" className={styles.section}>
-          <h2 className={styles.sectionTitle}>The Drop Model</h2>
+          <h2 className={styles.sectionTitle}>Нова колекція</h2>
           <p className={styles.sectionText}>
-            New pieces release in small, seasonal drops rather than a static catalog. Once a
-            drop sells through, it's retired — so what you're wearing stays specific to the
-            year you were part of ACE.
+            Нові колекції виходять невеликими сезонними дропами, а не залишаються
+            у постійному каталозі. Коли дроп розпродається, ми знімаємо його з продажу.
+            Так кожна річ зберігає особливий зв’язок із роком, коли ти був частиною ACE.
           </p>
         </Reveal>
 
         <Reveal as="div" className={styles.section}>
-          <h2 className={styles.sectionTitle}>Pickup &amp; Delivery</h2>
+          <h2 className={styles.sectionTitle}>Отримання та доставка</h2>
           <p className={styles.sectionText}>
-            Every order can be picked up directly at ACE School at no cost, or shipped to
-            you — the choice is yours at checkout.
+            Кожне замовлення можна безкоштовно забрати безпосередньо в ACE School.
           </p>
         </Reveal>
       </div>
 
       <div className={styles.ctaSection}>
         <div className="container">
-          <p className={styles.ctaHeadline}>Wear Your Ace.</p>
+          <p className={styles.ctaHeadline}>Будь собою. Будь ACE.</p>
           <Button as={Link} to="/shop" variant="primary">
-            Shop All
+            Усі товари
           </Button>
         </div>
       </div>

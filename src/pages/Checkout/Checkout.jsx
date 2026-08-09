@@ -18,17 +18,17 @@ const initialForm = {
 
 function validate(form) {
   const errors = {};
-  if (!form.firstName.trim()) errors.firstName = 'First name is required.';
-  if (!form.lastName.trim()) errors.lastName = 'Last name is required.';
-  if (!form.phone.trim()) errors.phone = 'Phone number is required.';
+  if (!form.firstName.trim()) errors.firstName = 'Введіть ім’я.';
+if (!form.lastName.trim()) errors.lastName = 'Введіть прізвище.';
+if (!form.phone.trim()) errors.phone = 'Введіть номер телефону.';
   else if (!/^[+\d][\d\s()-]{6,}$/.test(form.phone.trim())) {
-    errors.phone = 'Enter a valid phone number.';
+    errors.phone = 'Введіть коректний номер телефону.';
   }
-  if (!form.email.trim()) errors.email = 'Email is required.';
+  if (!form.email.trim()) errors.email = 'Введіть email.';
   else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim())) {
-    errors.email = 'Enter a valid email address.';
+    errors.email = 'Введіть коректну електронну адресу.';
   }
-  if (!form.className.trim()) errors.className = 'Class is required.';
+  if (!form.className.trim()) errors.className = 'Вкажіть клас.';
   return errors;
 }
 
@@ -43,11 +43,11 @@ export default function Checkout() {
     return (
       <div className="container">
         <div className={styles.wrap} style={{ textAlign: 'center' }}>
-          <h1 className={styles.title}>Checkout</h1>
+          <h1 className={styles.title}>Оформлення замовлення</h1>
           <p style={{ color: 'var(--c-dark-60)', marginBottom: '24px' }}>
-            Your bag is empty — add something before checking out.
+            Ваш кошик порожній. Додайте товар перед оформленням замовлення.
           </p>
-          <Button as={Link} to="/shop">Explore the Store</Button>
+          <Button as={Link} to="/shop">До магазину</Button>
         </div>
       </div>
     );
@@ -86,22 +86,37 @@ export default function Checkout() {
     });
 
     await saveOrder(order);
-    clearCart();
-    navigate('/success', { state: { order } });
+
+const response = await fetch('/.netlify/functions/send-order', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(order),
+});
+
+const result = await response.json();
+
+if (!response.ok) {
+  throw new Error(result.error || 'Не вдалося відправити замовлення');
+}
+
+clearCart();
+navigate('/success', { state: { order } });
   };
 
   return (
     <div className="container">
       <div className={styles.wrap}>
-        <h1 className={styles.title}>Checkout</h1>
+        <h1 className={styles.title}>Оформлення замовлення</h1>
 
         <div className={styles.layout}>
           <form className={styles.form} onSubmit={handleSubmit} noValidate>
             <fieldset className={styles.fieldset}>
-              <legend className={styles.legend}>Contact</legend>
+              <legend className={styles.legend}>Контактні дані</legend>
               <div className={styles.row2}>
                 <Field
-                  label="First Name"
+                  label="Імʼя"
                   id="firstName"
                   value={form.firstName}
                   onChange={(v) => setField('firstName', v)}
@@ -109,7 +124,7 @@ export default function Checkout() {
                   autoComplete="given-name"
                 />
                 <Field
-                  label="Last Name"
+                  label="Прізвище"
                   id="lastName"
                   value={form.lastName}
                   onChange={(v) => setField('lastName', v)}
@@ -119,7 +134,7 @@ export default function Checkout() {
               </div>
               <div className={styles.row2}>
                 <Field
-                  label="Phone"
+                  label="Телефон"
                   id="phone"
                   type="tel"
                   value={form.phone}
@@ -139,17 +154,17 @@ export default function Checkout() {
                 />
               </div>
               <Field
-                label="Class"
+                label="Клас"
                 id="className"
                 value={form.className}
                 onChange={(v) => setField('className', v)}
                 error={errors.className}
-                placeholder="e.g. 10-B"
+                placeholder="наприклад, 5B"
               />
             </fieldset>
 
             <fieldset className={styles.fieldset}>
-              <legend className={styles.legend}>Delivery Method</legend>
+              <legend className={styles.legend}>Спосіб отримання</legend>
               <div className={styles.radioGroup} role="radiogroup" aria-label="Delivery method">
                 <label className={styles.radioOption}>
                   <input
@@ -160,8 +175,8 @@ export default function Checkout() {
                     onChange={() => setField('deliveryMethod', 'pickup')}
                   />
                   <span className={styles.radioText}>
-                    <span className={styles.radioLabel}>Pick Up At ACE School</span>
-                    <span className={styles.radioHint}>Ready in 3–5 school days, free.</span>
+                    <span className={styles.radioLabel}>Забрати в ACE School</span>
+                    <span className={styles.radioHint}>Готово через 3–5 робочих днів, безкоштовно.</span>
                   </span>
                 </label>
                 <label className={styles.radioOption}>
@@ -173,34 +188,34 @@ export default function Checkout() {
                     onChange={() => setField('deliveryMethod', 'other')}
                   />
                   <span className={styles.radioText}>
-                    <span className={styles.radioLabel}>Other</span>
-                    <span className={styles.radioHint}>Nova Poshta or courier — details in comment.</span>
+                    <span className={styles.radioLabel}>Інший спосіб</span>
+                    <span className={styles.radioHint}>Нова пошта або кур’єр. Деталі в коментарі.</span>
                   </span>
                 </label>
               </div>
             </fieldset>
 
             <fieldset className={styles.fieldset}>
-              <legend className={styles.legend}>Comment</legend>
+              <legend className={styles.legend}>Коментар</legend>
               <div className={styles.field}>
-                <label className="sr-only" htmlFor="comment">Comment (optional)</label>
+                <label className="sr-only" htmlFor="comment">Коментар (необов’язково)</label>
                 <textarea
                   id="comment"
                   className={styles.textarea}
                   value={form.comment}
                   onChange={(e) => setField('comment', e.target.value)}
-                  placeholder="Delivery address, notes for pickup, anything else..."
+                  placeholder="Адреса доставки, примітки щодо отримання або будь-яка інша інформація..."
                 />
               </div>
             </fieldset>
 
             <Button type="submit" variant="primary" full disabled={submitting}>
-              {submitting ? 'Placing Order…' : 'Place Order'}
+              {submitting ? 'Оформлення замовлення…' : 'Оформити замовлення'}
             </Button>
           </form>
 
           <aside className={`${styles.summary} ${styles.summaryMobile}`}>
-            <span className={styles.summaryTitle}>Order Summary</span>
+            <span className={styles.summaryTitle}>Підсумок замовлення</span>
             {items.map((line) => (
               <div className={styles.summaryLine} key={line.key}>
                 <span className={styles.summaryLineName}>
@@ -210,7 +225,7 @@ export default function Checkout() {
               </div>
             ))}
             <div className={styles.summaryTotal}>
-              <span>Total</span>
+              <span>Разом</span>
               <span>{formatPrice(subtotal, items[0]?.currency)}</span>
             </div>
           </aside>

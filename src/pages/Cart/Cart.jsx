@@ -13,9 +13,9 @@ export default function Cart() {
     return (
       <div className="container">
         <div className={styles.empty}>
-          <span className="eyebrow">Your Bag</span>
-          <h1 className={styles.emptyTitle}>Your bag is empty.</h1>
-          <Button as={Link} to="/shop">Explore the Store</Button>
+          <span className="eyebrow">Твій кошик</span>
+          <h1 className={styles.emptyTitle}>Ваш кошик порожній.</h1>
+          <Button as={Link} to="/shop">До магазину</Button>
         </div>
       </div>
     );
@@ -24,7 +24,7 @@ export default function Cart() {
   return (
     <div className="container">
       <div className={styles.wrap}>
-        <h1 className={styles.title}>Your Bag</h1>
+        <h1 className={styles.title}>Твій кошик</h1>
 
         <div className={styles.layout}>
           <ul className={styles.list}>
@@ -43,7 +43,7 @@ export default function Cart() {
                     <div>
                       <Link to={`/product/${line.slug}`} className={styles.name}>{line.name}</Link>
                       <div className={styles.variant}>
-                        {line.color ? `${line.color} · ` : ''}Size {line.size}
+                        {line.color ? `${line.color} · ` : ''}Розмір {line.size}
                       </div>
                     </div>
                     <span className={styles.linePrice}>
@@ -60,7 +60,7 @@ export default function Cart() {
                       className={styles.remove}
                       onClick={() => removeItem(line.key)}
                     >
-                      Remove
+                      Видалити
                     </button>
                   </div>
                 </div>
@@ -69,21 +69,21 @@ export default function Cart() {
           </ul>
 
           <div className={styles.summary}>
-            <span className={styles.summaryTitle}>Order Summary</span>
+            <span className={styles.summaryTitle}>Підсумок замовлення</span>
             <div className={styles.summaryRow}>
-              <span>Subtotal</span>
+              <span>Сума</span>
               <span>{formatPrice(subtotal, items[0]?.currency)}</span>
             </div>
             <div className={styles.summaryRow}>
-              <span>Delivery</span>
-              <span>Calculated at checkout</span>
+              <span>Доставка</span>
+              <span>Згідно тарифів служби доставки</span>
             </div>
             <div className={styles.summaryTotal}>
-              <span>Total</span>
+              <span>Разом</span>
               <span>{formatPrice(subtotal, items[0]?.currency)}</span>
             </div>
             <Button as={Link} to="/checkout" variant="primary" full>
-              Checkout
+              Оформити замовлення
             </Button>
           </div>
         </div>

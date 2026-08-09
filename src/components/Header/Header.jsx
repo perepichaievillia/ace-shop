@@ -42,7 +42,7 @@ export default function Header() {
                 `${styles.navLink} ${isActive ? styles.navLinkActive : ''}`
               }
             >
-              Shop
+              Магазин
             </NavLink>
             <NavLink
               to="/about"
@@ -50,7 +50,7 @@ export default function Header() {
                 `${styles.navLink} ${isActive ? styles.navLinkActive : ''}`
               }
             >
-              About
+              Про нас
             </NavLink>
           </nav>
 

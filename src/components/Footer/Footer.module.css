@@ -5,7 +5,7 @@
 }
 
 .top {
-  padding: var(--sp-9) 0 var(--sp-7);
+  padding: var(--sp-9) 32px var(--sp-7);
   display: grid;
   gap: var(--sp-7);
 }
@@ -51,7 +51,7 @@
 
 .bottom {
   border-top: var(--hairline-light);
-  padding: var(--sp-5) 0 var(--sp-7);
+  padding: var(--sp-5) 32px var(--sp-7);
   display: flex;
   flex-wrap: wrap;
   gap: var(--sp-3);
