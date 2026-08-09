@@ -1,15 +1,22 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import Button from '../../components/Button/Button';
-import ProductImage from '../../components/ProductImage/ProductImage';
 import ProductGrid from '../../components/ProductGrid/ProductGrid';
 import Marquee from '../../components/Marquee/Marquee';
 import Reveal from '../../components/Reveal/Reveal';
 import { getFeaturedProducts } from '../../data/products';
 import styles from './Home.module.css';
 
-// Підключаємо файл даних, які будуть змінюватися через адмінку
+// Підключаємо файл даних, які будуть змінюватися через адмін-панель
 import heroData from '../../data/hero.json';
+
+// Функція для коректного оброблення шляху до фотографії
+function getImageUrl(image) {
+  if (!image) return '';
+  if (image.startsWith('http')) return image;
+  const cleanPath = image.replace(/^public\//, '').replace(/^\//, '');
+  return `${import.meta.env.BASE_URL}${cleanPath}`;
+}
 
 export default function Home() {
   const featured = getFeaturedProducts().slice(0, 4);
@@ -41,7 +48,7 @@ export default function Home() {
             <div className={styles.heroImageWrap}>
               <span className={styles.heroBadge}>New Drop</span>
               <img
-                src={heroData.heroImage}
+                src={getImageUrl(heroData.heroImage)}
                 alt="ACE Hero"
                 className={styles.heroImage}
               />
@@ -67,58 +74,65 @@ export default function Home() {
       </section>
 
       <section className={styles.manifesto}>
-  <div className="container">
-    <Reveal>
-      <p className={styles.manifestoText}>
-        Ми не просто <span className={styles.fade}>ходимо до школи.</span>
-        <br />
-        Ми — частина <span className={styles.fade}>ACE.</span>
-      </p>
-    </Reveal>
+        <div className="container">
+          <Reveal>
+            <p className={styles.manifestoText}>
+              Ми не просто <span className={styles.fade}>ходимо до школи.</span>
+              <br />
+              Ми — частина <span className={styles.fade}>ACE.</span>
+            </p>
+          </Reveal>
 
-    <Reveal delay={120} className={styles.manifestoRow} style={{ marginTop: '48px' }}>
-      <p className={styles.manifestoNote}>
-        Це не просто мерч. Це частина спільноти, яку можна носити із собою далеко за межами школи.
-      </p>
+          <Reveal delay={120} className={styles.manifestoRow} style={{ marginTop: '48px' }}>
+            <p className={styles.manifestoNote}>
+              Це не просто мерч. Це частина спільноти, яку можна носити із собою далеко за межами школи.
+            </p>
 
-      <Button as={Link} to="/about" variant="outlineLight">
-        Наша історія
-      </Button>
-    </Reveal>
-  </div>
-</section>
+            <Button as={Link} to="/about" variant="outlineLight">
+              Наша історія
+            </Button>
+          </Reveal>
+        </div>
+      </section>
 
       <section className={styles.section}>
         <div className="container">
           <Reveal className={styles.sectionHead}>
             <h2 className={styles.sectionTitle}>Обирай своє</h2>
           </Reveal>
-          <div className={styles.categoryGrid}>
-            <Reveal>
-              <Link to="/shop?category=clothing" className={styles.categoryCard}>
-                <ProductImage
-                  imageKey="crewneck-forest-1"
-                  label="Clothing"
-                  alt="Clothing category"
+          <Reveal>
+            <div className={styles.categoryGrid}>
+              <Link to="/shop?category=junior" className={styles.categoryCard}>
+                <img
+                  src={getImageUrl('images/products/pub../img_2540.jpg.jpg')} 
+                  alt="Молодша школа"
                   className={styles.categoryImg}
                 />
                 <div className={styles.categoryOverlay} />
-                <span className={styles.categoryLabel}>Одяг</span>
+                <span className={styles.categoryLabel}>Молодша школа</span>
               </Link>
-            </Reveal>
-            <Reveal delay={100}>
+
+              <Link to="/shop?category=senior" className={styles.categoryCard}>
+                <img
+                  src={getImageUrl('images/products/crewneck-forest-1.jpg')} 
+                  alt="Старша школа"
+                  className={styles.categoryImg}
+                />
+                <div className={styles.categoryOverlay} />
+                <span className={styles.categoryLabel}>Старша школа</span>
+              </Link>
+
               <Link to="/shop?category=accessories" className={styles.categoryCard}>
-                <ProductImage
-                  imageKey="tote-natural-1"
-                  label="Accessories"
-                  alt="Accessories category"
+                <img
+                  src={getImageUrl('images/products/tote-natural-1.jpg')} 
+                  alt="Аксесуари"
                   className={styles.categoryImg}
                 />
                 <div className={styles.categoryOverlay} />
                 <span className={styles.categoryLabel}>Аксесуари</span>
               </Link>
-            </Reveal>
-          </div>
+            </div>
+          </Reveal>
         </div>
       </section>
 

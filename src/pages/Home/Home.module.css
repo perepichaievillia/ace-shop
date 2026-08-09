@@ -146,6 +146,7 @@
   font-size: var(--fs-body-lg);
 }
 
+/* CATEGORIES GRID */
 .categoryGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -179,19 +180,20 @@
 .categoryOverlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, var(--c-dark-60), transparent 45%);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent 45%);
 }
 
 .categoryLabel {
   position: absolute;
   left: var(--sp-4);
   bottom: var(--sp-4);
-  color: var(--c-light);
+  color: #ffffff;
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: clamp(1.6rem, 4vw, 2.6rem);
+  font-size: clamp(1.4rem, 3.5vw, 2.2rem);
   letter-spacing: -0.01em;
   text-transform: uppercase;
+  z-index: 2;
 }
 
 /* FINAL CTA */
