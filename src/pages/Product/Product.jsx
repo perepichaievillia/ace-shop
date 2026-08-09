@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import ProductImage from '../../components/ProductImage/ProductImage';
 import SwatchSelector from '../../components/SwatchSelector/SwatchSelector';
 import QuantitySelector from '../../components/QuantitySelector/QuantitySelector';
 import Button from '../../components/Button/Button';
@@ -14,6 +13,16 @@ const categoryLabels = {
   clothing: 'Одяг',
   accessories: 'Аксесуари',
 };
+
+// Функція для визначення правильного шляху до будь-якої картинки (і з адмінки, і локальної)
+function getImageUrl(image) {
+  if (!image) return '';
+  if (image.startsWith('http')) return image;
+  
+  // Очищаємо шлях від можливих 'public/' або '/' на початку
+  const cleanPath = image.replace(/^public\//, '').replace(/^\//, '');
+  return `${import.meta.env.BASE_URL}${cleanPath}`;
+}
 
 export default function Product() {
   const { slug } = useParams();
@@ -47,8 +56,14 @@ export default function Product() {
     );
   }
 
+  // Захист полів-масивів
+  const images = product.images || [];
+  const colors = product.colors || [];
+  const sizes = product.sizes || [];
+  const details = product.details || [];
+
   const handleAdd = () => {
-    if (!size) {
+    if (sizes.length > 0 && !size) {
       setError('Оберіть розмір перед додаванням до кошика.');
       setNotice('');
       return;
@@ -72,19 +87,23 @@ export default function Product() {
       <div className={styles.layout}>
         <div className={styles.gallery}>
           <div className={styles.mainImageWrap}>
-            <ProductImage
-              imageKey={product.images[activeImage]}
-              label={product.name}
-              alt={product.name}
-              className={styles.mainImage}
-            />
+            {images.length > 0 ? (
+              <img
+                src={getImageUrl(images[activeImage])}
+                alt={product.name}
+                className={styles.mainImage}
+                style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
+              />
+            ) : (
+              <div className={styles.mainImage}>Зображення відсутнє</div>
+            )}
           </div>
 
-          {product.images.length > 1 && (
+          {images.length > 1 && (
             <div className={styles.thumbRow}>
-              {product.images.map((img, i) => (
+              {images.map((img, i) => (
                 <button
-                  key={img}
+                  key={img + i}
                   type="button"
                   className={`${styles.thumb} ${
                     i === activeImage ? styles.thumbActive : ''
@@ -95,11 +114,11 @@ export default function Product() {
                   }`}
                   aria-pressed={i === activeImage}
                 >
-                  <ProductImage
-                    imageKey={img}
-                    label={product.name}
+                  <img
+                    src={getImageUrl(img)}
                     alt=""
                     className={styles.thumbImg}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                   />
                 </button>
               ))}
@@ -118,27 +137,31 @@ export default function Product() {
             {formatPrice(product.price, product.currency)}
           </p>
 
-          <p className={styles.desc}>{product.description}</p>
+          {product.description && (
+            <p className={styles.desc}>{product.description}</p>
+          )}
 
           <div className={styles.selectors}>
-            {product.colors.length > 0 && (
+            {colors.length > 0 && (
               <SwatchSelector
                 label="Колір"
-                options={product.colors}
+                options={colors}
                 value={color}
                 onChange={setColor}
               />
             )}
 
-            <SwatchSelector
-              label="Розмір"
-              options={product.sizes}
-              value={size}
-              onChange={(v) => {
-                setSize(v);
-                setError('');
-              }}
-            />
+            {sizes.length > 0 && (
+              <SwatchSelector
+                label="Розмір"
+                options={sizes}
+                value={size}
+                onChange={(v) => {
+                  setSize(v);
+                  setError('');
+                }}
+              />
+            )}
 
             <div className={styles.qtyRow}>
               <span className={styles.qtyLabel}>Кількість</span>
@@ -169,17 +192,21 @@ export default function Product() {
           </div>
 
           <div className={styles.accordions}>
-            <AccordionItem label="Деталі" defaultOpen>
-              <ul>
-                {product.details.map((d) => (
-                  <li key={d}>{d}</li>
-                ))}
-              </ul>
-            </AccordionItem>
+            {details.length > 0 && (
+              <AccordionItem label="Деталі" defaultOpen>
+                <ul>
+                  {details.map((d, index) => (
+                    <li key={index}>{d}</li>
+                  ))}
+                </ul>
+              </AccordionItem>
+            )}
 
-            <AccordionItem label="Матеріал">
-              <p>{product.material}</p>
-            </AccordionItem>
+            {product.material && (
+              <AccordionItem label="Матеріал">
+                <p>{product.material}</p>
+              </AccordionItem>
+            )}
 
             <AccordionItem label="Розмірна сітка">
               <p>
