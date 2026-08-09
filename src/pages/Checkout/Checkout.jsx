@@ -123,21 +123,27 @@ export default function Checkout() {
       });
 
       // Відправляємо замовлення в Telegram
-      const response = await fetch('/.netlify/functions/send-order', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(order),
-      });
-
-      const result = await response.json();
-
-      if (!response.ok) {
-        throw new Error(
-          result.error || 'Не вдалося відправити замовлення'
-        );
-      }
+      // СТАЛО:
+const response = await fetch('https://floral-flower-444cace-shop-auth.perepichaiev-illia.workers.dev/order', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    name: `${form.firstName.trim()} ${form.lastName.trim()}`,
+    phone: form.phone.trim(),
+    email: form.email.trim(),
+    address: `Клас: ${form.className.trim()} | Спосіб: ${form.deliveryMethod === 'pickup' ? 'Забрати в ACE School' : 'Інший спосіб'}`,
+    comment: form.comment.trim(),
+    items: items.map((line) => ({
+      name: line.name,
+      selectedSize: line.size,
+      quantity: line.quantity,
+      price: line.price,
+    })),
+    total: subtotal,
+  }),
+});
 
       // Якщо Telegram прийняв замовлення,
       // зберігаємо його локально
