@@ -2,7 +2,9 @@ export default async (req) => {
   if (req.httpMethod !== 'POST') {
     return {
       statusCode: 405,
-      body: JSON.stringify({ error: 'Method not allowed' }),
+      body: JSON.stringify({
+        error: 'Method not allowed',
+      }),
     };
   }
 
@@ -17,6 +19,8 @@ export default async (req) => {
         statusCode: 500,
         body: JSON.stringify({
           error: 'Telegram environment variables are missing',
+          hasToken: Boolean(token),
+          hasChatId: Boolean(chatId),
         }),
       };
     }
@@ -84,13 +88,17 @@ ${order.comment || 'Немає'}
 
     return {
       statusCode: 200,
-      body: JSON.stringify({ success: true }),
+      body: JSON.stringify({
+        success: true,
+      }),
     };
   } catch (error) {
+    console.error('send-order error:', error);
+
     return {
       statusCode: 500,
       body: JSON.stringify({
-        error: error.message,
+        error: error.message || 'Unknown server error',
       }),
     };
   }
