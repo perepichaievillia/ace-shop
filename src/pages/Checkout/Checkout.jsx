@@ -59,12 +59,16 @@ export default function Checkout() {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    const nextErrors = validate(form);
-    setErrors(nextErrors);
-    if (Object.keys(nextErrors).length > 0) return;
+  e.preventDefault();
 
-    setSubmitting(true);
+  const nextErrors = validate(form);
+  setErrors(nextErrors);
+
+  if (Object.keys(nextErrors).length > 0) return;
+
+  setSubmitting(true);
+
+  try {
     const order = buildOrder({
       customer: {
         firstName: form.firstName.trim(),
@@ -85,7 +89,41 @@ export default function Checkout() {
       total: subtotal,
     });
 
+    // Спочатку відправляємо замовлення в Telegram
+    const response = await fetch('/.netlify/functions/send-order', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(order),
+    });
+
+    const result = await response.json();
+
+    if (!response.ok) {
+      throw new Error(
+        result.error || 'Не вдалося відправити замовлення'
+      );
+    }
+
+    // Якщо Telegram прийняв замовлення — зберігаємо його
     await saveOrder(order);
+
+    clearCart();
+
+    navigate('/success', {
+      state: { order },
+    });
+  } catch (error) {
+    console.error('Помилка оформлення:', error);
+
+    alert(
+      `Не вдалося оформити замовлення.\n\n${error.message}`
+    );
+  } finally {
+    setSubmitting(false);
+  }
+};
 
 const response = await fetch('/.netlify/functions/send-order', {
   method: 'POST',
