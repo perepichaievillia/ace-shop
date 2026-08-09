@@ -18,14 +18,13 @@ export default function Success() {
         <span className={styles.check} aria-hidden="true">
           <Check size={30} strokeWidth={2.5} />
         </span>
-        <h1 className={styles.title}>Order Placed.</h1>
+        <h1 className={styles.title}>ЗАМОВЛЕННЯ ОФОРМЛЕНО</h1>
         <p className={styles.text}>
-          Thanks, {order.customer.firstName}. Your order is in — a confirmation has been
-          noted for {order.customer.email}. We&rsquo;ll be in touch before pickup.
+          Дякуємо, {order.customer.firstName}. Ваше замовлення прийнято, очікуйте повідомлення від відповідальної особи.
         </p>
 
         <div className={styles.orderCard}>
-          <span className={styles.orderId}>Order {order.id}</span>
+          <span className={styles.orderId}>ЗАМОВЛЕННЯ {order.id}</span>
           {order.items.map((item) => (
             <div className={styles.orderLine} key={`${item.productId}-${item.size}`}>
               <span>{item.name} · {item.size} &times; {item.quantity}</span>
@@ -33,17 +32,17 @@ export default function Success() {
             </div>
           ))}
           <div className={styles.orderTotal}>
-            <span>Total</span>
+            <span>До сплати</span>
             <span>{formatPrice(order.total)}</span>
           </div>
         </div>
 
         <div className={styles.actions}>
           <Button as={Link} to="/shop" variant="primary">
-            Continue Shopping
+            Продовжити покупки
           </Button>
           <Button as={Link} to="/" variant="outline">
-            Back to Home
+            На головну
           </Button>
         </div>
       </div>
