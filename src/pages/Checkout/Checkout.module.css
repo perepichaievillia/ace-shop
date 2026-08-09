@@ -1,5 +1,8 @@
 .wrap {
-  padding: var(--sp-6) 0 var(--sp-10);
+  width: min(100%, 1400px);
+  margin: 0 auto;
+  padding: var(--sp-6) var(--sp-6) var(--sp-10);
+  box-sizing: border-box;
 }
 
 .title {

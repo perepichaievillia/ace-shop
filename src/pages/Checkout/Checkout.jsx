@@ -56,8 +56,8 @@ export default function Checkout() {
 
   if (items.length === 0) {
     return (
-      <div className={styles.wrap} style={{ textAlign: 'center' }}>
-        <h1>Оформлення замовлення</h1>
+      <div className={styles.container} style={{ textAlign: 'center' }}>
+        <h1 className={styles.title}>Оформлення замовлення</h1>
 
         <p
           style={{
